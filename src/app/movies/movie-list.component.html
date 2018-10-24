@@ -24,3 +24,46 @@
   </table>
 
 </div>
+
+<div class="container">
+  <h2>Today's Movie</h2>
+  <input [(ngModel)]="todayMovieId">
+  <button (click)="getMovieById(todayMovieId)">click to show</button>
+  <table class="table">
+    <tr>
+      <td>{{movieById.title}}</td>
+      <td>{{movieById.overview}}</td>
+      <td>{{movieById.budget}}</td>
+      <td>{{movieById.releaseDate}}</td>
+      <td>{{movieById.averageVote}}</td>
+      <td>{{movieById.tagline}}</td>
+      <td>{{movieById.revenue | currency}}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="container">
+  <h2>Movie in {{genreId}}</h2>
+  <input [(ngModel)]="genreId">
+  <button (click)="getAllMoviesByGenreId(genreId)">click to show</button>
+  <table class="table">
+      <tr>
+        <th>Title</th>
+        <th>Overview</th>
+        <th>Budget</th>
+        <th>Release Date</th>
+        <th>Rating</th>
+        <th>Tagline</th>
+        <th>Revenue</th>
+      </tr>
+      <tr *ngFor="let movie of moviesByGenreId">
+        <td>{{movie.title}}</td>
+        <td>{{movie.overview}}</td>
+        <td>{{movie.budget}}</td>
+        <td>{{movie.releaseDate}}</td>
+        <td>{{movie.averageVote}}</td>
+        <td>{{movie.tagline}}</td>
+        <td>{{movie.revenue | currency}}</td>
+      </tr>
+    </table>
+</div>
