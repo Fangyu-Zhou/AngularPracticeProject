@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { Observable } from 'rxjs';
 import { Movie } from '../shared/models/Movie';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,21 @@ export class MovieService {
 
   getAllMoviesByGenreId(genreId: number): Observable<Movie[]> {
     return this.apiService.getAll('/movies/genre/' + genreId);
+  }
+
+  getNowPlayingMovies(): Observable<Movie[]> {
+    return this.apiService.getAll('/movies/nowplaying');
+  }
+
+  getUpcomingMovies(): Observable<Movie[]> {
+    return this.apiService.getAll('/movies/upcoming');
+  }
+
+  getMovieDetailsFromTmdb() {
+
+  }
+
+  getPopularMovies(): Observable<Movie[]> {
+    return this.apiService.getAll('/movies/popular');
   }
 }

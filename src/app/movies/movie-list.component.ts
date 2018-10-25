@@ -27,7 +27,7 @@ export class MovieListComponent implements OnInit {
     this.getMovieById(this.todayMovieId);
     this.getAllMoviesByGenreId(this.genreId);
   }
-  
+
   getAllMovies() {
     this.movieService.getAllMovies()
       .subscribe(
