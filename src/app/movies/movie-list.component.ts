@@ -51,15 +51,6 @@ export class MovieListComponent implements OnInit {
       )
   }
 
-  getMovieById(id: number) {
-    this.movieService.getMovieById(id)
-      .subscribe(
-        mById => {
-          this.movieById = mById;
-          console.log(this.movieById);
-        }
-      )
-  }
 
   getAllMoviesByGenreId(genreId: number) {
     this.movieService.getAllMoviesByGenreId(genreId)

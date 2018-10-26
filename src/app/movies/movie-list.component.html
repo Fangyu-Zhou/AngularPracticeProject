@@ -2,8 +2,8 @@
   movie-list works!
 </p>
 <div class="container">
-  <table class="table">
-    <tr>
+  <table class="table" >
+    <tr style="text-align: center">
       <th>Title</th>
       <th>Overview</th>
       <th>Budget</th>
@@ -11,6 +11,7 @@
       <th>Rating</th>
       <th>Tagline</th>
       <th>Revenue</th>
+      <th>trailer Img</th>
     </tr>
     <tr *ngFor="let movie of moviesByGenreId">  
       <td>{{movie.title}}</td>
@@ -20,6 +21,7 @@
       <td>{{movie.averageVote}}</td>
       <td>{{movie.tagline}}</td>
       <td>{{movie.revenue | currency}}</td>
+      <td><img style="height: 300px; width: 200px" src="{{movie.posterUrl}}" [routerLink]="['/movie', movie.id]"></td>
     </tr>
   </table>
 
