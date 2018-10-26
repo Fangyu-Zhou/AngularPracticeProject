@@ -12,7 +12,7 @@
       <th>Tagline</th>
       <th>Revenue</th>
     </tr>
-    <tr *ngFor="let movie of movies">
+    <tr *ngFor="let movie of moviesByGenreId">  
       <td>{{movie.title}}</td>
       <td>{{movie.overview}}</td>
       <td>{{movie.budget}}</td>
@@ -25,7 +25,7 @@
 
 </div>
 
-<div class="container">
+<!-- <div class="container">
   <h2>Today's Movie</h2>
   <input [(ngModel)]="todayMovieId">
   <button (click)="getMovieById(todayMovieId)">click to show</button>
@@ -66,4 +66,4 @@
         <td>{{movie.revenue | currency}}</td>
       </tr>
     </table>
-</div>
+</div> -->

@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 //root module to import libraries
 //first file to look into when app is not working
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppComponent } from './app.component';
 import { GenreComponent } from './genre/genre.component';
 import { MovieListComponent } from './movies/movie-list.component';
@@ -20,6 +22,7 @@ import { NotFoundComponent } from './shared/components/not-found.component';
 import { MovieFormComponent } from './movies/movie-form.component';
 import { MyMoviesComponent } from './movies/my-movies.component';
 import { CreateAccountComponent } from './account/create-account.component';
+import { CreateMovieComponent } from './admin/create-movie.component';
 
 @NgModule({
   declarations: [
@@ -36,16 +39,25 @@ import { CreateAccountComponent } from './account/create-account.component';
     NotFoundComponent,
     MovieFormComponent,
     MyMoviesComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    CreateMovieComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    NgbModule,
     RouterModule.forRoot([
-      {path: '', component: HomeComponent},
-      {path: 'movies', component: MovieListComponent},
-      {path: 'movie/:id', component: MovieComponent}
+      { path: '', component: HomeComponent },
+      { path: 'movies', component: MovieListComponent },
+      { path: 'movie/:id', component: MovieComponent },
+      { path: 'genre/:id', component: MovieListComponent },
+      { path: 'aboutUs', component: AboutUsComponent },
+      { path: 'contactUs', component: ContactUsComponent },
+      { path: 'account/create', component: CreateAccountComponent },
+      { path: 'admin/movie/new', component: CreateMovieComponent },
+      { path: 'login', component: LoginComponent },
+      { path: '**', component: NotFoundComponent }
     ])
   ],
   providers: [],

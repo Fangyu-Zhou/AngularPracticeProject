@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../services/movie.service';
 import { Movie } from '../shared/models/Movie';
 import { pipe } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
@@ -16,16 +17,28 @@ export class MovieListComponent implements OnInit {
   genreId: number;
   moviesByGenreId: Movie[];
 
-  constructor(private movieService: MovieService) {
+  constructor(private movieService: MovieService, private route: ActivatedRoute) {
     this.movieById = new Movie;
     this.todayMovieId = 1;
     this.genreId = 1;
   }
 
   ngOnInit() {
-    this.getAllMovies();
-    this.getMovieById(this.todayMovieId);
-    this.getAllMoviesByGenreId(this.genreId);
+    this.route.paramMap.subscribe(
+      params => {
+        //use + to shortcut transfer string to number 
+        this.genreId = +params.get("id");
+        if (this.genreId > 0) {
+          console.log(this.genreId);
+          this.getAllMoviesByGenreId(this.genreId);
+        } else {
+          this.getAllMovies();
+        }
+        
+      }
+    )  
+    // this.getMovieById(this.todayMovieId);
+    ;
   }
 
   getAllMovies() {
