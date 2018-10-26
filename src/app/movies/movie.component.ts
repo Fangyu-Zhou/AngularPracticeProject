@@ -9,8 +9,8 @@ import { RouterLinkActive, ActivatedRoute } from '@angular/router';
   styleUrls: ['./movie.component.css']
 })
 export class MovieComponent implements OnInit {
-  movie: number = 0;
-  movieById: Movie = new Movie;
+  movieId: number = 0;
+  movie: Movie = new Movie;
 
   constructor(private movieService: MovieService,private route: ActivatedRoute) { }
 
@@ -18,10 +18,10 @@ export class MovieComponent implements OnInit {
     this.route.paramMap.subscribe(
       params => {
         //use + to shortcut transfer string to number 
-        this.movie = +params.get("id");
-        if (this.movie > 0) {
-          console.log(this.movie);
-          this.getMovieById(this.movie);
+        this.movieId = +params.get("id");
+        if (this.movieId > 0) {
+          console.log(this.movieId);
+          this.getMovieById(this.movieId);
         }
         
       }
@@ -32,8 +32,8 @@ export class MovieComponent implements OnInit {
     this.movieService.getMovieById(id)
       .subscribe(
         mById => {
-          this.movieById = mById;
-          console.log(this.movieById);
+          this.movie = mById;
+          console.log(this.movie);
         }
       )
   }
