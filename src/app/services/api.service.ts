@@ -29,6 +29,14 @@ export class ApiService {
     return this.http.get(`${environment.apiurl}${url}${id}`)
       .pipe(
         map(response => response as any)
-      )
+      );
+  }
+
+  // ? means optional
+  create(url: String, resource: Object = {}, options?) {
+    return this.http.post(`${environment.apiurl}${url}`, JSON.stringify(resource), options)
+      .pipe(
+        map(response => response as any)
+      );
   }
 }

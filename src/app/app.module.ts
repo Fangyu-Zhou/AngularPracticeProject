@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { JwtModule } from '@auth0/angular-jwt';
 //root module to import libraries
 //first file to look into when app is not working
 
@@ -23,6 +25,11 @@ import { MovieFormComponent } from './movies/movie-form.component';
 import { MyMoviesComponent } from './movies/my-movies.component';
 import { CreateAccountComponent } from './account/create-account.component';
 import { CreateMovieComponent } from './admin/create-movie.component';
+// import { LoginComponent } from './login/login.component'
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -47,6 +54,12 @@ import { CreateMovieComponent } from './admin/create-movie.component';
     HttpClientModule,
     FormsModule,
     NgbModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost']
+      }
+    }),
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'movies', component: MovieListComponent },
