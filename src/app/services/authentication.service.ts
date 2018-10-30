@@ -61,7 +61,7 @@ export class AuthenticationService {
   get isAdmin() {
     if (this.decodeToken() != null) {
       const role = this.decodeToken().role;
-      if(role) {
+      if (role) {
         return role.includes('Admin');
       }
     }
